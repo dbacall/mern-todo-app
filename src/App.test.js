@@ -1,9 +1,20 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import Enzyme, { shallow, mount } from "enzyme";
 import App from './App';
+import Adapter from "enzyme-adapter-react-16";
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+Enzyme.configure({ adapter: new Adapter() });
+
+describe ("App copmonent", () => {
+  test("renders", () => {
+    const wrapper = shallow(<App />);
+
+    expect(wrapper.exists()).toBe( true );
+  });
+
+  test("title rendered", () => {
+    const wrapper = shallow(<App />);
+
+    expect(wrapper.find('h2').text()).toEqual("Todo App")
+  })
 });
