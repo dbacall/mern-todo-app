@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class TodosList extends Component {
+export default class CreateTodo extends Component {
     render () {
         return (
             <div>

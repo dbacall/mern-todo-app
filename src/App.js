@@ -9,32 +9,23 @@ import TodosList from './components/todos-list.component'
 
 import logo from "./logo.png";
 
-// function App() {
-//   return (
-//     <div className="container">
-//       <h2>Todo App</h2>
-//     </div>
-//   );
-// }
-
 class App extends Component {
   render() {
     return (
       <Router>
-        
         <div className="container">
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="https://codingthesmartway.com" target="_blank" rel="noopener noreferrer">
+          <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <a className="navbar-brand" href="https://codingthesmartway.com" target="_blank" rel="noopener noreferrer">
               <img src={logo} width="30" height="30" alt="CodingTheSmartWay.com" />
             </a>
             <Link to="/" className="navbar-brand" id="main-title">Todo App</Link>
             <div className="collpase navbar-collapse">
               <ul className="navbar-nav mr-auto">
                 <li className="navbar-item">
-                  <Link to="/" className="nav-link">Todos</Link>
+                  <Link to="/" className="nav-link" id="todos-list-nav-btn">Todos</Link>
                 </li>
                 <li className="navbar-item">
-                  <Link to="/create" className="nav-link">Create Todo</Link>
+                  <Link to="/create" className="nav-link" id="create-todo-nav-btn">Create Todo</Link>
                 </li>
               </ul>
             </div>
