@@ -15,6 +15,6 @@ describe ("App copmonent", () => {
   test("title rendered", () => {
     const wrapper = shallow(<App />);
 
-    expect(wrapper.find('h2').text()).toEqual("Todo App")
+    expect(wrapper.find('#main-title').text()).toEqual("Todo App")
   })
 });
