@@ -2,11 +2,9 @@ import React, {Component} from 'react';
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-
-import CreateTodo from './components/create-todo-list.component'
+import CreateTodo from './components/create-todo.component'
 import EditTodo from './components/edit-todo-list.component'
 import TodosList from './components/todos-list.component'
-
 import logo from "./logo.png";
 
 class App extends Component {
@@ -15,9 +13,9 @@ class App extends Component {
       <Router>
         <div className="container">
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <a className="navbar-brand" href="https://codingthesmartway.com" target="_blank" rel="noopener noreferrer">
+            <Link className="navbar-brand" to="/">
               <img src={logo} width="30" height="30" alt="CodingTheSmartWay.com" />
-            </a>
+            </Link>
             <Link to="/" className="navbar-brand" id="main-title">Todo App</Link>
             <div className="collpase navbar-collapse">
               <ul className="navbar-nav mr-auto">
