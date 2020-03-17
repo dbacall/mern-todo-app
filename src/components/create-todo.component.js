@@ -61,6 +61,7 @@ export default class CreateTodo extends Component {
                         <input 
                             type='text'
                             className='form-control'
+                            id='desc'
                             value={this.state.todo_description}
                             onChange={this.onChangeTodoDescription}
                         />
