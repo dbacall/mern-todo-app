@@ -7,13 +7,23 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe("CreateTodo component", () => {
 
-  it("renders the value in state for todo description", () => {
-    const wrapper = shallow(<CreateTodo />)
+  let wrapper
+  beforeEach(() => {
+    wrapper = shallow(<CreateTodo />);
+  });
 
+  it("user text is echoed", () => {
     wrapper.find('#desc').simulate("change", {
       target: { value: "first todo" }
     })
     expect(wrapper.find('#desc').props().value).toEqual("first todo")
+  })
+
+  it("changes the value in state for todo description", () => {
+    wrapper.find('#desc').simulate("change", {
+      target: { value: "first todo" }
+    })
+    expect(wrapper.state().todo_description).toEqual("first todo")
   })
 
 })
