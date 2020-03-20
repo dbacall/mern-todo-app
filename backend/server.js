@@ -66,6 +66,15 @@ todoRoutes.route('/update/:id').post(function(req, res) {
   });
 });
 
+todoRoutes.route('/delete/:id').delete(function(req, res) {
+  Todo.deleteOne({
+    _id: req.params.id
+  }, function (err, todo) {
+    if (err) return res.send(err);
+    res.json({ message: 'Deleted' });
+  });  
+})
+
 app.use('/todos', todoRoutes);
 
 app.listen(PORT, function() {
