@@ -3,10 +3,11 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const PORT = 4000;
 const todoRoutes = express.Router();
 
-let Todo = require('./todo.model');
+const PORT = 4000;
+
+let Todo = require('./todo.model.js');
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -19,7 +20,7 @@ connection.once('open', function() {
 })
 
 todoRoutes.route('/').get(function(req, res) {
-  todoRoutes.find(function(err, todos) {
+  Todo.find(function(err, todos) {
     if (err) {
       console.log(err);
     } else {
@@ -30,7 +31,7 @@ todoRoutes.route('/').get(function(req, res) {
 
 todoRoutes.route('/:id').get(function(req, res) {
   let id = req.params.id;
-  Todo.findById(id, function(todo) {
+  Todo.findById(id, function(req, todo) {
     res.json(todo);
   });
 });
