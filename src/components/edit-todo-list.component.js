@@ -139,20 +139,6 @@ export default class EditTodo extends Component {
               <label className="form-check-label">High</label>
             </div>
           </div>
-          <div className="form-check">
-            <input
-              className="form-check-input"
-              id="completedCheckbox"
-              type="checkbox"
-              name="completedCheckbox"
-              onChange={this.onChangeTodoCompleted}
-              checked={this.state.todo_completed}
-              value={this.state.todo_completed}
-            />
-            <label className="form-check-label" htmlFor="completedCheckbox">
-              Completed
-            </label>
-          </div>
 
           <br />
 
