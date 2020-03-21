@@ -6,12 +6,20 @@ import { Link } from "react-router-dom";
 export default class TodosList extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      todos: []
+      todos: [],
+      todoDeleted: false
     };
+
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
+  // _isMounted = false;
+
   componentDidMount() {
+    // this._isMounted = true;
+
     axios
       .get("http://localhost:4000/todos/")
       .then(response => {
@@ -22,13 +30,34 @@ export default class TodosList extends Component {
       });
   }
 
-  componentDidUpdate() {
-    console.log(this.state);
+  // componentDidUpdate(prevState) {
+  //   if (prevState !== this.state) {
+  //     axios
+  //       .get("http://localhost:4000/todos/")
+  //       .then(response => {
+  //         this.setState({ todos: response.data });
+  //       })
+  //       .catch(function(error) {
+  //         console.log(error);
+  //       });
+  //   }
+  // }
+
+  componentWillUnmount() {
+    // this._isMounted = false;
+  }
+
+  handleDelete() {
+    this.setState({
+      todoDeleted: true
+    });
   }
 
   todoList() {
-    return this.state.todos.map(function(currentTodo, i) {
-      return <Todo todo={currentTodo} key={i} />;
+    return this.state.todos.map((currentTodo, i) => {
+      return (
+        <Todo todo={currentTodo} key={i} handleDelete={this.handleDelete} />
+      );
     });
   }
 

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import TodosList from "./todos-list.component";
 
 export default class CreateTodo extends Component {
   constructor(props) {
