@@ -8,18 +8,13 @@ export default class TodosList extends Component {
     super(props);
 
     this.state = {
-      todos: [],
-      todoDeleted: false
+      todos: []
     };
 
     this.handleDelete = this.handleDelete.bind(this);
   }
 
-  // _isMounted = false;
-
   componentDidMount() {
-    // this._isMounted = true;
-
     axios
       .get("http://localhost:4000/todos/")
       .then(response => {
@@ -30,27 +25,15 @@ export default class TodosList extends Component {
       });
   }
 
-  // componentDidUpdate(prevState) {
-  //   if (prevState !== this.state) {
-  //     axios
-  //       .get("http://localhost:4000/todos/")
-  //       .then(response => {
-  //         this.setState({ todos: response.data });
-  //       })
-  //       .catch(function(error) {
-  //         console.log(error);
-  //       });
-  //   }
-  // }
-
-  componentWillUnmount() {
-    // this._isMounted = false;
-  }
-
   handleDelete() {
-    this.setState({
-      todoDeleted: true
-    });
+    axios
+      .get("http://localhost:4000/todos/")
+      .then(response => {
+        this.setState({ todos: response.data });
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
   }
 
   todoList() {

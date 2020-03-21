@@ -7,8 +7,6 @@ export default class Todo extends Component {
     super(props);
 
     this.onClick = this.onClick.bind(this);
-
-    this.state = { changed: false };
   }
 
   onClick(e) {
