@@ -1,42 +1,37 @@
-import React, { Component } from "react";
-import axios from "axios";
+import React, { Component } from 'react';
+import axios from 'axios';
 
 export default class CreateTodo extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      todo_description: "",
-      todo_responsible: "",
-      todo_priority: "",
-      todo_completed: false
+      todo_description: '',
+      todo_responsible: '',
+      todo_priority: '',
+      todo_completed: false,
     };
-
-    this.onChangeTodoDescription = this.onChangeTodoDescription.bind(this);
-    this.onChangeTodoResponsible = this.onChangeTodoResponsible.bind(this);
-    this.onChangeTodoPriority = this.onChangeTodoPriority.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
   }
 
-  onChangeTodoDescription(e) {
+  onChangeTodoDescription = (e) => {
     this.setState({
-      todo_description: e.target.value
+      todo_description: e.target.value,
     });
-  }
+  };
 
-  onChangeTodoResponsible(e) {
+  onChangeTodoResponsible = (e) => {
     this.setState({
-      todo_responsible: e.target.value
+      todo_responsible: e.target.value,
     });
-  }
+  };
 
-  onChangeTodoPriority(e) {
+  onChangeTodoPriority = (e) => {
     this.setState({
-      todo_priority: e.target.value
+      todo_priority: e.target.value,
     });
-  }
+  };
 
-  onSubmit(e) {
+  onSubmit = (e) => {
     e.preventDefault();
 
     console.log(`Form submitted: ${this.state}`);
@@ -48,21 +43,20 @@ export default class CreateTodo extends Component {
       todo_description: this.state.todo_description,
       todo_responsible: this.state.todo_responsible,
       todo_priority: this.state.todo_priority,
-      todo_completed: this.state.todo_completed
+      todo_completed: this.state.todo_completed,
     };
 
-    axios.post("http://localhost:4000/todos/add", newTodo).then(res => {
-      //   console.log(res.data);
-      this.props.history.push("/");
+    axios.post('http://localhost:4000/todos/add', newTodo).then((res) => {
+      this.props.history.push('/');
     });
 
     this.setState({
-      todo_description: "",
-      todo_responsible: "",
-      todo_priority: "",
-      todo_completed: false
+      todo_description: '',
+      todo_responsible: '',
+      todo_priority: '',
+      todo_completed: false,
     });
-  }
+  };
 
   render() {
     return (
@@ -96,7 +90,7 @@ export default class CreateTodo extends Component {
                 name="priorityOptions"
                 id="priorityLow"
                 value="Low"
-                checked={this.state.todo_priority === "Low"}
+                checked={this.state.todo_priority === 'Low'}
                 onChange={this.onChangeTodoPriority}
               />
               <label className="form-check-label">Low</label>
@@ -108,7 +102,7 @@ export default class CreateTodo extends Component {
                 name="priorityOptions"
                 id="priorityMedium"
                 value="Medium"
-                checked={this.state.todo_priority === "Medium"}
+                checked={this.state.todo_priority === 'Medium'}
                 onChange={this.onChangeTodoPriority}
               />
               <label className="form-check-label">Medium</label>
@@ -120,7 +114,7 @@ export default class CreateTodo extends Component {
                 name="priorityOptions"
                 id="priorityHigh"
                 value="High"
-                checked={this.state.todo_priority === "High"}
+                checked={this.state.todo_priority === 'High'}
                 onChange={this.onChangeTodoPriority}
               />
               <label className="form-check-label">High</label>
